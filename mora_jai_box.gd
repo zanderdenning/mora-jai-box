@@ -100,6 +100,9 @@ func _on_goal_button_activated(index: int) -> void:
 		return
 	if board_state.goals[index].check(board_state, get_goal_index(board_state, index)):
 		goal_buttons[index].set_correct(true)
+		if board_state.check():
+			if OS.get_name() == "Web":
+				JavaScriptBridge.eval("confetti()")
 	else:
 		reset()
 
