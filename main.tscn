@@ -7,6 +7,8 @@
 ambient_light_source = 1
 ambient_light_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xm2m"]
+
 [sub_resource type="Animation" id="Animation_h2yge"]
 length = 0.001
 tracks/0/type = "value"
@@ -75,12 +77,33 @@ anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 
-[node name="ColorPalette" type="VBoxContainer" parent="UI/Editor" unique_id=400210200]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Editor" unique_id=1471709594]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+
+[node name="ToolPalette" type="VBoxContainer" parent="UI/Editor/HBoxContainer" unique_id=178868060]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PaletteTabs" type="TabContainer" parent="UI/Editor/HBoxContainer" unique_id=826257539]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0xm2m")
+current_tab = 0
+tabs_visible = false
+
+[node name="ColorPalette" type="VBoxContainer" parent="UI/Editor/HBoxContainer/PaletteTabs" unique_id=400210200]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="AltColorPalette" type="VBoxContainer" parent="UI/Editor/HBoxContainer/PaletteTabs" unique_id=91466812]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=605729080]
 layout_mode = 1

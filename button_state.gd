@@ -14,7 +14,17 @@ enum ButtonColor {
 	BLUE,
 }
 
+enum Sticker {
+	NONE = 0,
+	ALT = 1,
+}
+
 @export var color: ButtonColor = ButtonColor.GRAY
+@export var alt_color: ButtonColor = ButtonColor.GRAY
+@export var stickers: int = Sticker.NONE
 
 func serialize() -> PackedByteArray:
-	return PackedByteArray([color])
+	var out: PackedByteArray = PackedByteArray([color, stickers & 0xFF])
+	if stickers & Sticker.ALT:
+		out.append(alt_color)
+	return out

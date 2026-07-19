@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cj34ukykgx1c0"]
 
 [ext_resource type="Script" uid="uid://b3l08r224f38h" path="res://mora_jai_box_button.gd" id="1_5qglm"]
+[ext_resource type="Texture2D" uid="uid://b8ydicnhqdmlr" path="res://resources/sticker/alt_color.svg" id="2_sn12j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qglm"]
 resource_local_to_scene = true
@@ -57,6 +58,11 @@ script = ExtResource("1_5qglm")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Model" unique_id=689875365]
 mesh = SubResource("BoxMesh_1r8lh")
+
+[node name="AltColor" type="Sprite3D" parent="Model" unique_id=755509838]
+transform = Transform3D(0.048, 0, 0, 0, -2.0981465e-09, 0.048, 0, -0.048, -2.0981465e-09, 0, 0.051, 0)
+visible = false
+texture = ExtResource("2_sn12j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2080989387]
 shape = SubResource("BoxShape3D_syh1j")

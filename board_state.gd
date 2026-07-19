@@ -6,7 +6,7 @@ extends Resource
 @export var buttons: Array[ButtonState]
 @export var goals: Array[BoardGoal]
 
-const SERIALIZATION_VERSION = 0
+const SERIALIZATION_VERSION = 1
 
 func serialize() -> PackedByteArray:
 	var state: PackedByteArray = PackedByteArray([SERIALIZATION_VERSION, width, height])
@@ -18,19 +18,28 @@ func serialize() -> PackedByteArray:
 
 static func deserialize(serialized: PackedByteArray) -> BoardState:
 	var version: int = serialized[0]
-	if version != 0:
+	if version > 1:
 		return null
 	var state: BoardState = BoardState.new()
 	state.width = serialized[1]
 	state.height = serialized[2]
+	var pos: int = 3
 	var button_count: int = state.width * state.height
 	for i in button_count:
 		var button: ButtonState = ButtonState.new()
-		button.color = serialized[3 + i] as ButtonState.ButtonColor
+		button.color = serialized[pos] as ButtonState.ButtonColor
+		pos += 1
+		if version > 0:
+			button.stickers = serialized[pos]
+			pos += 1
+			if button.stickers & ButtonState.Sticker.ALT:
+				button.alt_color = serialized[pos] as ButtonState.ButtonColor
+				pos += 1
 		state.buttons.append(button)
 	for i in 4:
 		var goal: BoardGoalColor = BoardGoalColor.new()
-		goal.color = serialized[3 + button_count + i * 2 + 1] as ButtonState.ButtonColor
+		goal.color = serialized[pos + 1] as ButtonState.ButtonColor
+		pos += 2
 		state.goals.append(goal)
 	return state
 
@@ -77,6 +86,10 @@ func activate_button(index: int) -> void:
 			pass
 		_:
 			pass
+	if button_state.stickers & ButtonState.Sticker.ALT:
+		var button_color: ButtonState.ButtonColor = button_state.color
+		button_state.color = button_state.alt_color
+		button_state.alt_color = button_color
 
 func _activate_white(index: int, button_state: ButtonState) -> void:
 	for neighbor in _get_adjacent_positions(index):

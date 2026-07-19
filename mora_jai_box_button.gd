@@ -17,9 +17,11 @@ static var BUTTON_COLOR_MAP: Dictionary[ButtonState.ButtonColor, Color] = {
 }
 
 @onready var mesh: CSGMesh3D = $Model/CSGMesh3D
+@onready var alt_color_sprite: Sprite3D = $Model/AltColor
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var color: ButtonState.ButtonColor = ButtonState.ButtonColor.GRAY
+var alt_color: ButtonState.ButtonColor = ButtonState.ButtonColor.GRAY
 
 func _input_event(_camera: Camera3D, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -33,5 +35,14 @@ func set_color(new_color: ButtonState.ButtonColor) -> void:
 	var mat: StandardMaterial3D = (mesh.mesh as BoxMesh).material
 	mat.albedo_color = BUTTON_COLOR_MAP[new_color]
 
+func set_alt_color(new_color: ButtonState.ButtonColor) -> void:
+	alt_color = new_color
+	alt_color_sprite.modulate = BUTTON_COLOR_MAP[new_color]
+
+func enable_alt_color(enabled: bool) -> void:
+	alt_color_sprite.visible = enabled
+
 func set_state(new_state: ButtonState) -> void:
 	set_color(new_state.color)
+	enable_alt_color(new_state.stickers & ButtonState.Sticker.ALT)
+	set_alt_color(new_state.alt_color)
