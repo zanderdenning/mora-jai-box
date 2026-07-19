@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://b85uyeqw3xvnc"]
+
+[ext_resource type="Script" uid="uid://baevp4hb31es1" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://shkm0sondmxx" path="res://mora_jai_box.tscn" id="1_glv2v"]
+
+[sub_resource type="Environment" id="Environment_glv2v"]
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_h2yge"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ShareText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0xm2m"]
+resource_name = "link_copied_fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/ShareText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2yge"]
+_data = {
+&"RESET": SubResource("Animation_h2yge"),
+&"link_copied_fade": SubResource("Animation_0xm2m")
+}
+
+[node name="Main" type="Node3D" unique_id=286064137]
+script = ExtResource("1_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1426461402]
+transform = Transform3D(1, 0, 0, 0, 0.3158809, 0.9487989, 0, -0.9487989, 0.3158809, 0, 3.949638, 1.6177361)
+environment = SubResource("Environment_glv2v")
+
+[node name="MoraJaiBox" parent="." unique_id=441283797 instance=ExtResource("1_glv2v")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2098008164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.454631, 0)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="UI" type="Control" parent="." unique_id=1085969000]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Editor" type="Control" parent="UI" unique_id=435574697]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="ColorPalette" type="VBoxContainer" parent="UI/Editor" unique_id=400210200]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=605729080]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="EditToggle" type="CheckButton" parent="UI/VBoxContainer" unique_id=1908698174]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Edit"
+
+[node name="ShareButton" type="Button" parent="UI/VBoxContainer" unique_id=1011670981]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Share"
+
+[node name="SolveButton" type="Button" parent="UI/VBoxContainer" unique_id=615783044]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Solve"
+
+[node name="RandomizeButton" type="Button" parent="UI/VBoxContainer" unique_id=531967848]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Randomize"
+
+[node name="ShareText" type="Label" parent="UI" unique_id=1209173601]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Link copied to clipboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SolutionText" type="Label" parent="UI" unique_id=2093452466]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1422675214]
+libraries/ = SubResource("AnimationLibrary_h2yge")

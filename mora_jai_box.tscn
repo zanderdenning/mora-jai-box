@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://shkm0sondmxx"]
+
+[ext_resource type="Script" uid="uid://bldw5cbg4tpl4" path="res://mora_jai_box.gd" id="1_0im4r"]
+[ext_resource type="PackedScene" uid="uid://cj34ukykgx1c0" path="res://mora_jai_box_button.tscn" id="1_8vffq"]
+[ext_resource type="Script" uid="uid://bfddi70m23pyo" path="res://board_state.gd" id="2_i5823"]
+[ext_resource type="Script" uid="uid://d2efdvcxat2ac" path="res://button_state.gd" id="2_tw2jq"]
+[ext_resource type="Script" uid="uid://dwvqdwb63osoi" path="res://board_goal.gd" id="3_5hr47"]
+[ext_resource type="Script" uid="uid://cf2d3h6ghtq7v" path="res://board_goal_color.gd" id="4_2t3yx"]
+[ext_resource type="PackedScene" uid="uid://4dh1evspadxx" path="res://goal_button.tscn" id="7_2t3yx"]
+
+[sub_resource type="Resource" id="Resource_8j6uf"]
+script = ExtResource("2_tw2jq")
+color = 8
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_eyxsd"]
+script = ExtResource("2_tw2jq")
+color = 5
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_e2luh"]
+script = ExtResource("2_tw2jq")
+color = 8
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_0il4m"]
+script = ExtResource("2_tw2jq")
+color = 8
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_fcay0"]
+script = ExtResource("2_tw2jq")
+color = 6
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_gmrb6"]
+script = ExtResource("2_tw2jq")
+color = 8
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_5jraq"]
+script = ExtResource("2_tw2jq")
+color = 8
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_rbuny"]
+script = ExtResource("2_tw2jq")
+color = 5
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_jkddr"]
+script = ExtResource("2_tw2jq")
+color = 8
+metadata/_custom_type_script = "uid://d2efdvcxat2ac"
+
+[sub_resource type="Resource" id="Resource_2t3yx"]
+script = ExtResource("4_2t3yx")
+color = 6
+metadata/_custom_type_script = "uid://cf2d3h6ghtq7v"
+
+[sub_resource type="Resource" id="Resource_urmby"]
+script = ExtResource("4_2t3yx")
+color = 5
+metadata/_custom_type_script = "uid://cf2d3h6ghtq7v"
+
+[sub_resource type="Resource" id="Resource_nlhrj"]
+script = ExtResource("4_2t3yx")
+color = 6
+metadata/_custom_type_script = "uid://cf2d3h6ghtq7v"
+
+[sub_resource type="Resource" id="Resource_sgp17"]
+script = ExtResource("4_2t3yx")
+color = 6
+metadata/_custom_type_script = "uid://cf2d3h6ghtq7v"
+
+[sub_resource type="Resource" id="Resource_m553d"]
+script = ExtResource("2_i5823")
+buttons = Array[ExtResource("2_tw2jq")]([SubResource("Resource_8j6uf"), SubResource("Resource_eyxsd"), SubResource("Resource_e2luh"), SubResource("Resource_0il4m"), SubResource("Resource_fcay0"), SubResource("Resource_gmrb6"), SubResource("Resource_5jraq"), SubResource("Resource_rbuny"), SubResource("Resource_jkddr")])
+goals = Array[ExtResource("3_5hr47")]([SubResource("Resource_2t3yx"), SubResource("Resource_urmby"), SubResource("Resource_nlhrj"), SubResource("Resource_sgp17")])
+metadata/_custom_type_script = "uid://bfddi70m23pyo"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_764mt"]
+albedo_color = Color(0.13, 0.0325, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_764mt"]
+material = SubResource("StandardMaterial3D_764mt")
+size = Vector3(5, 1, 5)
+
+[node name="MoraJaiBox" type="Node3D" unique_id=441283797]
+script = ExtResource("1_0im4r")
+starting_state = SubResource("Resource_m553d")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1348761047]
+mesh = SubResource("BoxMesh_764mt")
+
+[node name="Buttons" type="Node3D" parent="." unique_id=849460671]
+
+[node name="Button11" parent="Buttons" unique_id=1939601366 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.55, -1.2)
+
+[node name="Button12" parent="Buttons" unique_id=538973158 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -1.2)
+
+[node name="Button13" parent="Buttons" unique_id=2089829339 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.55, -1.2)
+
+[node name="Button21" parent="Buttons" unique_id=1331477279 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.55, 0)
+
+[node name="Button22" parent="Buttons" unique_id=715669825 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+
+[node name="Button23" parent="Buttons" unique_id=1792948071 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.55, 0)
+
+[node name="Button31" parent="Buttons" unique_id=487623793 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.55, 1.2)
+
+[node name="Button32" parent="Buttons" unique_id=2060577672 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 1.2)
+
+[node name="Button33" parent="Buttons" unique_id=1138626250 instance=ExtResource("1_8vffq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.55, 1.2)
+
+[node name="Goals" type="Node3D" parent="." unique_id=265996331]
+
+[node name="GoalButton0" parent="Goals" unique_id=6012089 instance=ExtResource("7_2t3yx")]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.1, 0.55, -2.1)
+
+[node name="GoalButton1" parent="Goals" unique_id=1682325962 instance=ExtResource("7_2t3yx")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.1, 0.55, -2.1)
+
+[node name="GoalButton2" parent="Goals" unique_id=1750319125 instance=ExtResource("7_2t3yx")]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -2.1, 0.55, 2.1)
+
+[node name="GoalButton3" parent="Goals" unique_id=1737657121 instance=ExtResource("7_2t3yx")]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 2.1, 0.55, 2.1)
