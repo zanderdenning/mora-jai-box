@@ -27,7 +27,7 @@ texture={
 "compress/hdr_compression": 1,
 "compress/high_quality": false,
 "compress/lossy_quality": 0.7,
-"compress/mode": 2,
+"compress/mode": 0,
 "compress/normal_map": 0,
 "compress/rdo_quality_loss": 0.0,
 "compress/uastc_level": 0,
@@ -60,3 +60,4 @@ texture={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/compress_with_gpu=false

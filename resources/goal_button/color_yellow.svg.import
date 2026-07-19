@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cohe02of8p37r"
-path.s3tc="res://.godot/imported/color_yellow.svg-4136634952f1464d440d91b4105840a1.s3tc.ctex"
+path="res://.godot/imported/color_yellow.svg-4136634952f1464d440d91b4105840a1.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/goal_button/color_yellow.svg"
-dest_files=["res://.godot/imported/color_yellow.svg-4136634952f1464d440d91b4105840a1.s3tc.ctex"]
+dest_files=["res://.godot/imported/color_yellow.svg-4136634952f1464d440d91b4105840a1.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
