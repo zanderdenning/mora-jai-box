@@ -18,6 +18,7 @@ jobs:
       - uses: chickensoft-games/setup-godot@v2
         with:
           version: 4.6.3
+          use-dotnet: false
       - run: godot --headless --export-release "Web" build/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
