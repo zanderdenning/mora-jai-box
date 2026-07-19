@@ -50,7 +50,11 @@ func check() -> bool:
 
 func activate_button(index: int) -> void:
 	var button_state: ButtonState = buttons[index]
-	match button_state.color:
+	var color: ButtonState.ButtonColor = button_state.color
+	if color == ButtonState.ButtonColor.BLUE:
+		var center_button: ButtonState = buttons[width * height / 2]
+		color = center_button.color
+	match color:
 		ButtonState.ButtonColor.GRAY:
 			pass
 		ButtonState.ButtonColor.WHITE:
@@ -74,14 +78,14 @@ func activate_button(index: int) -> void:
 		_:
 			pass
 
-func _activate_white(index: int, _button_state: ButtonState) -> void:
-	buttons[index].color = ButtonState.ButtonColor.GRAY
+func _activate_white(index: int, button_state: ButtonState) -> void:
 	for neighbor in _get_adjacent_positions(index):
 		var state: ButtonState = buttons[neighbor]
-		if state.color == ButtonState.ButtonColor.WHITE:
+		if state.color == button_state.color:
 			state.color = ButtonState.ButtonColor.GRAY
 		elif state.color == ButtonState.ButtonColor.GRAY:
-			state.color = ButtonState.ButtonColor.WHITE
+			state.color = button_state.color
+	buttons[index].color = ButtonState.ButtonColor.GRAY
 
 func _activate_yellow(index: int, button_state: ButtonState) -> void:
 	if index < width:
@@ -113,10 +117,10 @@ func _activate_black(index: int, _button_state: ButtonState) -> void:
 		buttons[i] = buttons[i - 1]
 	buttons[row_base] = last_state
 
-func _activate_red(_index: int, _button_state: ButtonState) -> void:
+func _activate_red(_index: int, button_state: ButtonState) -> void:
 	for button in buttons:
 		if button.color == ButtonState.ButtonColor.BLACK:
-			button.color = ButtonState.ButtonColor.RED
+			button.color = button_state.color
 		elif button.color == ButtonState.ButtonColor.WHITE:
 			button.color = ButtonState.ButtonColor.BLACK
 
