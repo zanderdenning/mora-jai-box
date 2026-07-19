@@ -85,7 +85,7 @@ func _toggle_edit(enabled: bool) -> void:
 func _copy_link() -> void:
 	animation_player.play(&"link_copied_fade")
 	var serialized: PackedByteArray = box.starting_state.serialize()
-	DisplayServer.clipboard_set("http://localhost:8000/?%s" % Marshalls.raw_to_base64(serialized).replace("+", "-").replace("/", "_").replace("=", "."))
+	DisplayServer.clipboard_set("http://zanderdenning.github.io/mora-jai-box/?%s" % Marshalls.raw_to_base64(serialized).replace("+", "-").replace("/", "_").replace("=", "."))
 
 func _solve() -> void:
 	var solver: Solver = Solver.new()
