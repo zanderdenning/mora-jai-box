@@ -48,10 +48,10 @@ func _ready() -> void:
 
 func _update_from_hash() -> void:
 	var page_hash: String = JavaScriptBridge.eval("window.location.search")
-	print(page_hash)
 	if page_hash.length() > 1:
-		print(page_hash.substr(1).replace("-", "+").replace("_", "/").replace(".", "="))
-		var encoded_state: PackedByteArray = Marshalls.base64_to_raw(page_hash.substr(1).replace("-", "+").replace("_", "/").replace(".", "="))
+		var unpadded_b64: String = page_hash.substr(1).replace("-", "+").replace("_", "/").replace(".", "=")
+		var padded_b64: String = unpadded_b64 + "=".repeat((4 - (unpadded_b64.length() % 4)) % 4)
+		var encoded_state: PackedByteArray = Marshalls.base64_to_raw(padded_b64)
 		box.starting_state = BoardState.deserialize(encoded_state)
 		box.reset()
 	else:
@@ -85,7 +85,7 @@ func _toggle_edit(enabled: bool) -> void:
 func _copy_link() -> void:
 	animation_player.play(&"link_copied_fade")
 	var serialized: PackedByteArray = box.starting_state.serialize()
-	DisplayServer.clipboard_set("http://zanderdenning.github.io/mora-jai-box/?%s" % Marshalls.raw_to_base64(serialized).replace("+", "-").replace("/", "_").replace("=", "."))
+	DisplayServer.clipboard_set("http://zanderdenning.github.io/mora-jai-box/?%s" % Marshalls.raw_to_base64(serialized).replace("+", "-").replace("/", "_").replace("=", ""))
 
 func _solve() -> void:
 	var solver: Solver = Solver.new()
