@@ -48,7 +48,7 @@ texture={
 "process/size_limit": 0,
 "roughness/mode": 0,
 "roughness/src_normal": "",
-"svg/scale": 100.0
+"svg/scale": 20.48
 }
 
 [physics]

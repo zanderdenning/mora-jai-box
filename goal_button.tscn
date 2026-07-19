@@ -62,7 +62,7 @@ script = ExtResource("1_ol2fi")
 mesh = SubResource("CylinderMesh_gcpjh")
 
 [node name="Sprite3D" type="Sprite3D" parent="Model" unique_id=9739612]
-transform = Transform3D(0.004, 0, 0, 0, -1.7484555e-10, 0.004, 0, -0.004, -1.7484555e-10, 0, 0.051, -0.019641489)
+transform = Transform3D(0.02, 0, 0, 0, -8.7422775e-10, 0.02, 0, -0.02, -8.7422775e-10, 0, 0.051, -0.019641489)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=503541423]
 shape = SubResource("CylinderShape3D_gcpjh")
